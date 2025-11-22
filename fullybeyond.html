@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FullyBeyond: CSUF's First Design-a-thon </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-bg: #FBFBF8;
+            --accent: #111111;
+            --text: #111;
+            --muted: #aaa;
+            --hero-font: 'Georgia', serif;
+            --body-font: 'Georgia', serif;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            color: var(--text);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            background: var(--primary-bg);
+        }
+
+        h3 { 
+            margin-bottom: 0.3rem;
+            padding-left: 1rem;
+         }
+
+        
+        .page-header {
+            background-image: url('./images/fbfrogs3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            text-align: center;
+            color: #f0f0f0;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-title {
+            font-family: var(--hero-font);
+            font-size: 3rem;
+            color: #f0f0f0;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.3rem;
+            color: #f0f0f0;
+            font-weight: 400;
+        }
+
+        .content-container {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section-container {
+            background: #349950;
+            color: white;
+            border-radius: 0;
+            padding: 1rem 12rem;
+            margin-bottom: 0;
+            box-shadow: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .section-container.problem-statement,
+        .section-container.project-overview,
+        .section-container.research-planning,
+        .section-container.challenges-faced,
+        .section-container.lessons-learned,
+        .section-container.reflection,
+        .section-container.beyond-section,
+        .section-container.beyond-grid-container {
+            background: #FBFBF8;
+            color: var(--text);
+        }
+
+        .section-container.problem-statement .section-title,
+        .section-container.problem-statement .section-content,
+        .section-container.problem-statement .section-subtitle,
+        .section-container.project-overview .section-title,
+        .section-container.project-overview .section-content,
+        .section-container.project-overview .section-subtitle,
+        .section-container.research-planning .section-title,
+        .section-container.research-planning .section-content,
+        .section-container.research-planning .section-subtitle,
+        .section-container.challenges-faced .section-title,
+        .section-container.challenges-faced .section-content,
+        .section-container.challenges-faced .section-subtitle,
+        .section-container.lessons-learned .section-title,
+        .section-container.lessons-learned .section-content,
+        .section-container.lessons-learned .section-subtitle,
+        .section-container.reflection .section-title,
+        .section-container.reflection .section-content,
+        .section-container.reflection .section-subtitle,
+        .section-container.beyond-section .section-title,
+        .section-container.beyond-section .section-content,
+        .section-container.beyond-section .section-subtitle {
+            color: var(--text);
+        }
+
+        .section-container.problem-statement .section-title,
+        .section-container.challenges-faced .section-title,
+        .section-container.project-overview .section-title,
+        .section-container.research-planning .section-title,
+        .section-container.challenges-faced .section-title,
+        .section-container.lessons-learned .section-title,
+        .section-container.reflection .section-title {
+            border-bottom: 2px solid #111111;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .overview-item {
+            border: 2px none;
+            border-radius: 12px;
+            background: none;
+        }
+
+        .overview-title {
+            font-family: var(--hero-font);
+            font-size: 1.1rem;
+            color: #349950;
+            text-align: left;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .overview-content {
+            font-size: 1.1rem;
+            color: var(--text);
+            text-align: left;
+            align-items: center;
+            margin: 0rem;
+            font-weight: 500;
+        }
+
+        .section-container:first-child {
+            margin-top: 0;
+        }
+
+        .section-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: var(--hero-font);
+            font-size: 1.8rem;
+            color: #FBFBF8;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid white;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-family: var(--hero-font);
+            font-size: 1.4rem;
+            color: #FBFBF8;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #FBFBF8;
+        }
+
+        .section-content p {
+             margin-bottom: 1rem; 
+        }
+
+        .section-content ul {
+            margin: 0.5rem;
+            padding-left: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #FBFBF8;
+            border-radius: 12px;
+            border: 2px solid #111111;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #349950;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #111111;
+            font-weight: 600;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: #111111;
+            color: #FBFBF8;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                height: 200px;
+            }
+            
+            .case-study-title {
+                font-size: 2rem;
+            }
+            
+            .content-container {
+                padding: 4rem;
+            }
+            
+            .section-container {
+                padding: 1.5rem;
+            }
+            
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+
+/* FB Team Section */
+.fbteam-image-container {
+    text-align: center;
+}
+
+.section-container.fbteam-section {
+    background: #FBFBF8;
+    color: var(--text);
+    padding: 2rem ; 
+}
+
+.fbteam-image {
+    max-width: 60%;
+    height: auto;
+    border-radius: 2px;
+}
+
+/* Timeline Section */
+.timeline-image-container {
+    text-align: center;
+}
+
+.section-container.timeline-section {
+    background: #FBFBF8;
+    color: var(--text);
+    padding: 0; 
+}
+
+.timeline-image {
+    max-width: 60%;
+    height: auto;
+    border-radius: 0px;
+}
+
+/* FB Guide Section */
+.fbguide-image-container {
+    text-align: center;
+}
+
+.fbguide-image {
+    max-width: 500px;
+    height: auto;
+    flex-direction: column;
+    border-radius: 2px;
+    justify-content: center;
+}
+
+/* UCR Event and Ucla Section */
+.section-container.images-side-by-side {
+    background: #FBFBF8;
+    color: var(--text);
+    padding: 2rem 2rem;
+}
+
+.side-by-side-container {
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    gap: 10rem;
+    flex-wrap: wrap;
+}
+
+.ucr-image-container,
+.fbucla-image-container {
+    text-align: left;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 0 0 auto;
+    font-family: var(--hero-font);
+    color: #111111;
+    padding: 1rem 2rem;
+}
+
+.ucr-image {
+    max-width: 275px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.image-caption.ucr-image-container {
+    font-size: 0.8rem;
+    color: #111111;
+    font-weight: 500;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-style: italic;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+.fbucla-image {
+    max-width: 360px;
+    height: auto;
+    border-radius: 2px;
+}
+
+.image-caption.fbucla-image-container {
+    font-size: 0.8rem;
+    color: #111111;
+    font-weight: 500;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-style: italic;
+    max-width: 360px;
+}
+
+
+/* Event Day Section */
+.eventday-image {
+    max-width: 52%;
+    height: auto;
+    border-radius: 2px;
+}
+
+.eventday-image-container {
+    text-align: center;
+    background: #FBFBF8;
+    justify-content: center;
+}
+
+.section-container.eventday-section {
+    background: #FBFBF8; 
+    color: var(--text);
+    padding: 1rem 2rem;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Feedback Section */
+.feedback-image {
+    max-width: 80%;
+    height: auto;
+    justify-content: center;
+    border-radius: 2px;
+    margin-bottom: 2rem;
+}
+
+/*Beyond Section */
+.section-container.beyond-section {
+    background: #FBFBF8;
+    color: var(--text);
+    padding: 1rem 4rem;
+    gap: 2rem;
+}
+
+.beyond-grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-items: center;
+}
+
+.twofourteam-image-container,
+.afters-image-container,
+.bereal-image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FBFBF8;
+    font-family: var(--hero-font);
+    color: #111;
+    padding: 1rem 2rem;
+}
+
+.twofourteam-image {
+    max-width: 70%;
+    height: auto;
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.afters-image {
+    max-width: 70%;
+    height: auto;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.bereal-image {
+    max-width: 70%;
+    height: auto;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+/* Image Captions */
+.image-caption {
+    font-size: 0.8rem;
+    font-weight: 500;
+    width: 70%;
+    margin-top: .6rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+}
+.image-caption.afters-image-container,
+.image-caption.bereal-image-container,
+.image-caption.twofourteam-image-container {
+    font-size: 0.8rem;
+    color: #111;
+    font-weight: 500;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    max-width: 70%;
+    text-align: left;
+    font-style: italic;
+}
+
+.image-caption.eventday-image-container {
+    font-size: 0.8rem;
+    color: #111111;
+    font-weight: 500;
+    margin-top: .5rem;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-style: italic;
+    max-width: 100%
+}
+
+
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Portfolio</a>
+    
+    <header class="page-header">
+        <div class="header-content">
+            <h1 class="case-study-title">FullyBeyond</h1>
+            <p class="case-study-subtitle">CSUF's inaugural UX/UI design competition.</p>
+        </div>
+    </header>
+    
+    <div class="content-container">
+        <div class="section-container project-overview">
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <p class="overview-title">Role</p>
+                    <p class="overview-content">Marketing Lead, Designer</p>
+                </div>
+                <div class="overview-item">
+                    <p class="overview-title">Timeline</p>
+                    <p class="overview-content">March - November 2024</p>
+                </div>
+                <div class="overview-item">
+                    <h3 class="overview-title">Team</p>
+                    <p class="overview-content"> 5 Design Officers, <br> 7 Marketing Officers, <br> 5 Web Dev Officers, <br> 12 Organizers</p>
+                </div>
+                <div class="overview-item">
+                    <p class="overview-title">Tools/Skills</p>
+                    <p class="overview-content">Figma, UX Research</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container problem-statement">
+            <h2 class="section-title">Problem Statement</h2>
+            <div class="section-content">
+                <p>CSUF lacked a dedicated platform for students to collaborate, showcase their skills, and tackle real-world problems through UX design. While hackathons existed, they didn't focus on UX/UI design, and design-a-thons often lacked beginner-friendly learning environments.</p>
+            </div>
+        </div>
+        <div class="section-container fbteam-section">
+            <div class="fbteam-image-container">
+                <img src="./images/fbteam.jpg" alt="fbteam" class="fbteam-image">
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h2 class="section-title">Goal</h2>
+            <div class="section-content">
+                <p>To create a virtual design-a-thon event that fosters creativity, collaboration, and community while addressing real-world problems through UX/UI design.</p>
+                <p> We wanted to <strong>empower students</strong> to develop their confidence and enhance their design skills<strong> through a beginner-friendly environment.</strong></p>
+            </div>
+        </div>
+
+        </div>
+        <div class="section-container timeline-section">
+            <div class="timeline-image-container">
+                    <img src="./images/fbtimeline.png" alt="timeline" class="timeline-image">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container research-planning">
+            <h2 class="section-title">Research & Planning Process</h2>
+            <div class="section-content">
+                <p>To address these challenges, we conducted extensive research and sought guidance from experienced design-a-thon organizers. Our team efforts included:</p>
+                
+                <h3 class="section-subtitle">Attending Other Design-a-thons</h3>
+                <ul>Participated in events hosted by other universities to learn best practices, identify participant pain points, and observe event structures.</ul>
+                
+                <h3 class="section-subtitle">Connecting with Organizers</h3>
+                <ul>Consulted with experienced organizers from other universities to gain insights on securing sponsorships, structuring events, and navigating logistical challenges.</ul>
+                
+                <h3 class="section-subtitle">Drawing Inspiration</h3>
+                <ul>Incorporated key features such as workshops, mentorship sessions, and streamlined submission processes inspired by successful designathons.</ul>
+                
+                <h3 class="section-subtitle">Collaborative Planning</h3>
+                <ul>Formulated a tailored plan to create a beginner-friendly virtual designathon addressing CSUF's unique needs.</ul>
+            </div>
+        </div>
+
+        
+        <div class="section-container images-side-by-side">
+            <div class="side-by-side-container">
+                <div class="ucr-image-container">
+                    <img src="./images/ucrevent.jpg" alt="ucr event" class="ucr-image">
+                    <p class="image-caption">Workshop @ UCR’s Designverse Design-a-thon 2024.</p>
+                </div>
+                <div class="fbucla-image-container">
+                    <img src="./images/fbucla.jpg" alt="fbucla" class="fbucla-image">
+                    <p class="image-caption">FullyBeyond Team @ UCLA Design-a-thon 2024.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-container">
+            <h1 class="section-title">My Role & Contributions</h1>
+            <div class="section-content">
+                <p>As the <strong>Marketing Lead</strong> and a core organizer, I took on multiple roles, ensuring the event's success from planning to execution. My contributions included:</p>
+                
+                <h2 class="section-subtitle">Marketing Strategy & Execution</h2>
+                <h3><strong>Brand Identity</strong></h3>
+                <ul>
+                <li>Developed and implemented FullyBeyond's brand identity, mission, and a compelling social media voice.</li>
+                </ul>
+                <h3><strong>Engagement</strong></h3>
+                <ul>
+                <li>Devised creative outreach strategies, such as interactive Instagram posts and an official Spotify playlist, to personalize the event atmosphere and foster excitement.</li>
+                </ul>
+                <h3><strong>Content Creation</strong></h3>
+                <ul>
+                <li>Designed newsletters, promotional materials, and beginner-friendly templates to encourage hesitant participants and make the event more approachable.</li>
+                </ul>
+                <h2 class="section-subtitle">Community Building & Inclusivity</h2>
+                <h3><strong>Participant Guide</strong></h3>
+                <ul>
+                <li>Helped create a comprehensive, user-focused guide to ease participant anxiety, explaining the event timeline, team formation process, and submission requirements.</ul>
+                </ul>
+                    <div class="section-container fbguide-section">
+                    <img src="./images/fbguide.png" alt="FullyBeyond Guide" class="fbguide-image">
+                </div>
+               
+                <h3><strong>Team Matching</strong></h3>
+                <ul>
+                <li>Personally ensured that every participant who wanted a team was successfully matched, fostering a collaborative and inclusive environment.</li>
+                </ul>
+                
+                <h3><strong>Onboarding in Discord</strong></h3>
+                <ul>
+                <li>Facilitated community engagement by actively encouraging collaboration and extending the server's purpose to build a lasting UX community.</li>
+                </ul>
+
+                <h3><strong>Workshop Contribution</strong></h3>
+                <ul>
+                <li>Conducted a UX research workshop during the event, empowering participants to incorporate research-based methodologies into their projects.</li>
+                </ul>
+                
+                <h2 class="section-subtitle">Building Team Dynamics</h2>
+                <h3><strong>Team Morale</strong></h3>
+                <ul>
+                <li>Strengthened trust and camaraderie among organizers through shared meals and initiatives like team-building Spotify playlists, encouraging personal connection and collaboration.</li>
+                </ul>
+                               
+                <h3><strong>Encouraging a Welcoming Team Atmosphere</strong></h3>
+                <ul>
+                <li>Actively fostered a supportive environment by verbally affirming ideas, validating contributions, and encouraging quieter team members to participate.</li>
+                </ul>                
+                
+                <h3><strong>1-on-1 Support</strong></h3>
+                <ul>
+                <li>Provided personalized support to team members who couldn't attend meetings, ensuring they felt included and were able to contribute effectively.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section-container challenges-faced">
+            <h2 class="section-title">Challenges Faced</h2>
+            <div class="section-content">
+                <h3 class="section-subtitle">Meeting Initial Deadlines</h3>
+                <ul>Early in the process, our team struggled to meet deadlines. I implemented a reward system that motivated accountability and encouraged teamwork, ultimately improving task completion.</ul>
+                
+                <h3 class="section-subtitle">Sponsorship Withdrawals</h3>
+                <ul>The week of the event, all sponsors pulled out. I instinctually decided to cover the prize funding myself to maintain team morale. However, my team rallied together to share financial responsibility, demonstrating resilience and commitment to our vision.</ul>
+                
+                <h3 class="section-subtitle">Logistics Complexities</h3>
+                <ul>We initially underestimated the challenges of onboarding participants across platforms (Devpost and Discord). I addressed this by consolidating processes, simplifying instructions, and providing updates to participants.</ul>
+                
+                <h3 class="section-subtitle">Participant Tracking</h3>
+                <ul>When acceptances were released, I noticed an issue that the RSVP Forms and Discord onboarding did not originally require participants to provide a consistent first and last names, which would create confusion with participant verification. I immediately notified my team and they addressed it in the Discord server, asking participants to adjust server names to first names, ensuring a smoother participation process.</ul>
+            </div>
+        </div>
+            
+        <div class="section-container eventday-section"></div>
+            <div class="eventday-image-container">
+                <img src="./images/eventday.JPG" alt="eventday" class="eventday-image">
+                <p class="image-caption">Day of the Event: 2024 FullyBeyond Team Room.</p>
+            </div>
+        </div>
+
+        <div class="section-container outcomes-impact">
+            <h2 class="section-title">Outcomes & Impact</h2>
+            <div class="section-content">
+                <h3 class="section-subtitle">Participant Success</h3>
+                <ul>We successfully created an engaging and educational experience tailored for beginners.</ul>
+                
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Participants</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">25</div>
+                        <div class="stat-label">Universities</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">75%</div>
+                        <div class="stat-label">Beginners</div>
+                    </div>
+                </div>
+                
+                <p>Feedback indicated that participants <strong>had a positive experience and found the event valuable in developing new skills.</strong></p>
+                
+                <h3 class="section-subtitle">Community Legacy</h3>
+                <ul>Established CSUF's first designathon and created a foundation for future organizers to build upon.</ul>
+                
+                <h3 class="section-subtitle">Team Growth</h3>
+                <ul>Organizers gained invaluable skills in event logistics, marketing, and UX design. The bonds formed created a lasting sense of camaraderie and dedication within the team.</ul>
+            </div>
+        </div>
+        <div class="section-container feedback-section">
+            <div class="feedback-image-container">
+                <img src="./images/feedback.png" alt="feedback" class="feedback-image">
+            </div>
+        </div>
+
+        <div class="section-container lessons-learned">
+            <h2 class="section-title">Lessons Learned</h2>
+            <div class="section-content">
+                <h3 class="section-subtitle">Marketing Overlook</h3>
+                <ul>
+                <li>A date discrepancy in participant submission deadlines caused confusion, resolved through clear communication and updates.</li>
+                </ul>
+                <h3 class="section-subtitle">Team Communication Gaps</h3>
+                <ul>
+                <li>Transparency, timely communication is vital for smooth collaboration.</li>
+                </ul>
+                <h3 class="section-subtitle">Sponsorship Challenges</h3>
+                <ul>
+                <li>Early outreach didn't secure enough support; a contingency plan is essential for future events.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="section-container reflection">
+            <h2 class="section-title">Reflection</h2>
+            <div class="section-content">
+                <p>FullyBeyond wasn't just an event... it was a labor of love aimed at creating something our younger selves would have appreciated. From beginner-friendly workshops to ensuring participants found teams, every decision was meticulously made to empower others to grow and succeed.</p>
+                
+                <p>This experience taught me the importance of <strong>trust, resilience, and adaptability</strong>. FullyBeyond <em>wasn't</em> just about building a platform; it was about creating opportunities for students to believe in themselves and their potential. The challenges we faced and overcame are a testament to the heart and dedication poured into this event.</p>
+            </div>
+        <div class="section-container beyond-section"></div>
+        <div class="beyond-grid-container">
+            <div class="afters-image-container">
+                <img src="./images/afters.JPEG" alt="afters" class="afters-image">
+                <p class="image-caption">Post-meeting activities.</p>
+            </div>
+            <div class="bereal-image-container">
+                <img src="./images/bereal.JPG" alt="bereal" class="bereal-image">
+                <p class="image-caption">BTS of marketing content.</p>
+            </div>
+            <div class="twofourteam-image-container">
+                <img src="./images/2024team.jpg" alt="2024team" class="twofourteam-image">
+                <p class="image-caption">The 2024 FullyBeyond Organizing Team.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

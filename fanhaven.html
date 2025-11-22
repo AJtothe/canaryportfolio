@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fanhaven: Building business intelligence for live events.  </title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        :root {
+            --primary-bg: #FBFBF8;
+            --accent: #111111;
+            --text: #111;
+            --muted: #aaa;
+            --hero-font: 'Georgia', serif;
+            --body-font: 'Georgia', serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Georgia', serif;
+            color: var(--text);
+            min-height: 100vh;
+            scroll-behavior: smooth;
+            background: var(--primary-bg);
+        }
+
+        h3 { margin-bottom: 0.3rem; }
+
+        .page-header {
+            background-image: url('./images/fanhavenbanner.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            text-align: center;
+            color: #FBFBF8;
+            z-index: 2;
+            position: relative;
+        }
+
+        .case-study-title {
+            font-family: var(--hero-font);
+            font-size: 3rem;
+            color: #FBFBF8;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .case-study-subtitle {
+            font-size: 1.3rem;
+            color: #FBFBF8;
+            font-weight: 400;
+        }
+
+        .content-container {
+            max-width: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .section-container {
+            background: #5620A1;
+            color: #FBFBF8;
+            border-radius: 0;
+            padding: 1rem 12rem;
+            margin-bottom: 0;
+            box-shadow: none;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .section-container.problem-statement,
+        .section-container.solution,
+        .section-container.project-overview,
+        .section-container.research-planning,
+        .section-container.design-decisions,
+        .section-container.takeaways {
+            background: #FBFBF8;
+            color: var(--text);
+        }
+
+        .section-container.problem-statement .section-title,
+        .section-container.problem-statement .section-content,
+        .section-container.problem-statement .section-subtitle,
+        .section-container.solution .section-title,
+        .section-container.solution .section-content,
+        .section-container.goal .section-subtitle,
+        .section-container.project-overview .section-title,
+        .section-container.project-overview .section-content,
+        .section-container.project-overview .section-subtitle,
+        .section-container.research-planning .section-title,
+        .section-container.research-planning .section-content,
+        .section-container.research-planning .section-subtitle,
+        .section-container.design-decisions .section-title,
+        .section-container.design-decisions .section-content,
+        .section-container.design-decisions .section-subtitle,
+        .section-container.takeaways .section-title,
+        .section-container.takeaways .section-content,
+        .section-container.takeaways .section-subtitle {
+            color: var(--text);
+        }
+
+        .section-container.problem-statement .section-title,
+        .section-container.solution .section-title,
+        .section-container.project-overview .section-title,
+        .section-container.design-decisions .section-title,
+        .section-container.challenges-faced .section-title,
+        .section-container.takeaways .section-title {
+            border-bottom: 2px solid #111111;
+        }
+
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .overview-item {
+            border: 2px none;
+            border-radius: 12px;
+            background: none;
+        }
+
+        .overview-title {
+            font-family: var(--hero-font);
+            font-size: 1.1rem;
+            color: #5620A1;
+            text-align: left;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .overview-content {
+            font-size: 1.1rem;
+            color: var(--text);
+            text-align: left;
+            align-items: center;
+            margin: 0rem;
+            font-weight: 500;
+        }
+
+
+        .section-container:first-child {
+            margin-top: 0;
+        }
+
+        .section-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            font-family: var(--hero-font);
+            font-size: 1.8rem;
+            color: #FBFBF8;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid white;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-subtitle {
+            font-family: var(--hero-font);
+            font-size: 1.4rem;
+            color: #FBFBF8;
+            margin: 1.5rem 0 1rem 0;
+            font-weight: 600;
+        }
+
+        .section-content {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #FBFBF8;
+        }
+
+        .section-content p {
+             margin-bottom: 1rem; 
+        }
+
+        .section-content ul {
+            margin: 0.5rem;
+            padding-left: 2rem;
+        }
+
+        .section-content li {
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+
+        }
+        .section-content ol {
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #FBFBF8;
+            border-radius: 12px;
+            border: 2px solid #111111;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #5620A1;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #111111;
+            font-weight: 600;
+        }
+
+        .back-button {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            background: #111111;
+            color: #FBFBF8;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background: #333;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                height: 200px;
+            }
+            
+            .case-study-title {
+                font-size: 2rem;
+            }
+            
+            .content-container {
+                padding: 4rem;
+            }
+            
+            .section-container {
+                padding: 1.5rem;
+            }
+            
+            .back-button {
+                top: 1rem;
+                left: 1rem;
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back-button">← Portfolio</a>
+    
+    <header class="page-header">
+        <div class="header-content">
+            <h1 class="case-study-title">Fanhaven</h1>
+            <p class="case-study-subtitle">Building business intelligence for live events.</p>
+        </div>
+    </header>
+
+    <div class="content-container">
+        <div class="section-container project-overview">
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <h3 class="overview-title">Role</h3>
+                    <p class="overview-content">UX Designer, UX Researcher</p>
+                </div>
+                <div class="overview-item">
+                    <h3 class="overview-title">Timeline</h3>
+                    <p class="overview-content">July - August 2025</p>
+                </div>
+                <div class="overview-item">
+                    <h3 class="overview-title">Team</h3>
+                    <p class="overview-content"> 1 Design Intern, <br> 1 Chief Design Officer</p>
+                </div>
+                <div class="overview-item">
+                    <h3 class="overview-title">Tools/Skills</h3>
+                    <p class="overview-content">Figma, UX Research</p>
+                </div>
+            </div>
+        </div>
+
+    <div class="section-container problem-statement">
+        <h2 class="section-title">The Challenge</h2>
+        <div class="section-content">
+            <p>As a company specialized in the live events space, Fanhaven presented a problem specifc to the live music industry and potential for improved fan experiences and artist engagement. <strong>How might we design a POS system that seamlessly balances simplicity for event staff with the complexity of real-time ticketing, merchandise, and financial reporting needs?</strong></p>
+        </div>
+    </div>
+
+    <div class="section-container solution">
+        <h2 class="section-title">Solution</h2>
+        <div class="section-content">
+            <p>A POS experience highly tailored to the live music industry that empowers merch teams to, <Strong> process transactions</Strong> for a seamless digital payment experience, as well as <strong> onboard the system with minimal training </strong> for both small pop-up events and large-scale concerts <strong> without compromising </strong> workflow.<p>
+        </div>
+    </div>
+
+    <div class="section-container key-insights">
+        <h2 class="section-title">Key Insights</h2>
+        <div class="section-content">
+            <ul>
+                <li><strong>High-volume environments:</strong> Staff needed to process transactions quickly during short intermissions or peak crowd surges.</li>
+                <li><strong>Ease of onboarding:</strong> Many merch staff are temporary/seasonal hires, so the system had to be intuitive with almost no training required.</li>
+                <li><strong>Scalability:</strong> The system had to work for both small pop-up events and large-scale concerts without changing the workflow.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section-container research-planning">
+        <h3 class="section-title">Through conversations with various management teams of high-level artists in the music industry, we discovered what's frustrating about merchandising. </h2>
+        <div class="section-content">
+            <p> From our findings, some of the recurring pain points emerged include, <strong>significant revenue leakage </strong>from merch loss (in one case, up to 50%), <strong>lack of real-time sales visibility</strong>, and <strong>unreliable inventory tracking</strong>. 
+            <p>These findings validated the need for a system designed specifically for high-pressure live event environments.</p>
+            </div>
+        </div>
+
+        <div class="section-container design-decisions">
+        <h2 class="section-title">Key Design Decisions</h1>
+            <h3 class="section-subtitle"> Design Exploration - Interface Simplification </h3> 
+            <p> <strong> <em> How can we create an intuitive UI with simple and clear information architecture for a POS system?</strong></em></p>
+            <div class="section-content">
+            <p>From user research and competative analysis, it was clear other solutions have complicated UI's with steep learning curves. These cause users to feel <strong>overwhelmed and frustrated</strong>, leading to decreased efficiency and increased errors in high-intense environments.</p>
+            <p>Initially, we focused on the core functionalities and flow of the POS system, ensuring a working prototype that could evolve from feedback. We then moved on to the UI and information architecture, ensuring it was simple and clear.</p>
+            
+            <ul>
+                <li>Early explorations tested different layout structures for faster product selection — e.g., grid-based vs. list-based item displays — to find the most glanceable, touch-friendly interface for merch staff in loud, crowded environments.</li>
+            </ul>
+            
+            <p> However, we realized the complexities in the POS with large tours, so a list-based item displays would lead to decreased efficiency and increased errors in high-intense environments.</p>
+        </div> 
+    </div>
+
+     <div class="section-container design-decisions">
+        <h3 class="section-subtitle"> Design Exploration - Checkout Flow Variations </h3> 
+            <p> <strong> <em> Providing a simple checkout experience for merchants.</strong></em></p>
+            <div class="section-content">
+             <p>We discovered during live events, merch sellers often faced long lines and limited time windows to process payments. We wanted to provide a more concise checkout flow for the merchant, improving overall checkout efficiency. </p>
+                <ul>
+                    <li>Several flows were explored: a multi-step checkout versus a condensed single-screen checkout.</li>
+                </ul>
+            
+                <p>We wanted to provide users with a fast and intuitive checkout experience optimized for event environments, incorporating larger touch targets and streamlined scanning functionality.</p>
+            </div>
+        </div>
+
+     <div class="section-container design-decisions">
+        <h3 class="section-subtitle"> Design Exploration - Microinteractions & Feedback States </h3> 
+                    <p> <strong> <em> Feedback that feels instant.</strong></em></p>
+                    <div class="section-content">
+                     <p> From our research, we learned how merchants often experienced uncertainty when confirming transactions due to delayed system feedback or unclear visual states.</p>
+                     <p>We wanted to explore how microinteractions and visual feedback could provide immediate clarity and confidence at every step of the checkout flow.</p>
+                     <p>Several feedback types were explored:</p>
+                     <ul>
+                        <li><strong>Subtle animation cues</strong> (button state transitions, loader pulses, confirmation checkmarks)</li>
+                        <li><strong>Color-coded states for actions</strong> (neutral, success, error, pending).</li>
+                        <li><strong>Sound or haptic feedback </strong> for physical confirmation of actions.</li>
+                        <li><strong>Progressive status indicators</strong> (e.g., “Processing Payment…” → “Payment Complete”).</li>
+                    </ul>
+                    </div>
+    </div>
+
+    </div>
+
+        <div class="section-container results">
+            <h1 class="section-title">Results</h1>
+            <div class="section-content">
+
+            <h3> Understanding a POS system has never been easier.</h3>
+            <p> A seamless POS experience for both small shows and large tours, with considerations for employee onboarding, dynamic inventory updates, and flexible category layouts.</p>
+            
+            <h3> Checkout with ease.</h3>
+            <p> Checkout in seconds with a flow designed to minimize friction and maximize speed during live events. By condensing the process into a clear <strong> Scan → Confirm → Pay </strong> sequence, staff could complete transactions in under 30 seconds. </p>
+            
+            <h3>Reassurance at every tap.</h3>
+            <p> The refined microinteractions provide clear visual confirmation for every action, reducing transaction errors and boosting staff confidence during rush periods. </p>
+        </div>
+
+    </div>
+        <div class="section-container takeaways">
+            <h1 class="section-title">Takeaways</h1>
+            <div class="section-content">
+
+                <h3> Simplicity wins.</h3>
+                <p>Merch teams at live events need to move fast, especially in high-pressure environments. If the POS feels cluttered or takes too many clicks, transactions slow down and lines grow. Designing with minimal steps and clean alignment rules ensures smooth, stress-free use.</p>
+                
+                <h3> Iterate. Iterate. Iterate.</h3>
+                <p>Throughout the design process, it's important to iterate as much as possible up until the deadline. There's no such thing as “perfect”, as there will always be room for improvements. In the end, time the only thing that determines work from being completed. Through iteration, it ensures that the design is as polished and ready within those constraints.</p>
+                
+                <h3> Design in Systems.</h3>
+                <p>Rather than designing something new every time, it's essential to understand the importance in designing in systems. Approaching design projects with a system-thinking frame of mind, makes it easier to scale new features or recycle design assets for other uses without reinventing the wheel.</p>
+
+              </div>
+              <div class="section-content nextsteps">
+                <h2><em>Next Steps</em></h2>
+                <p>Moving forward, the POS system will continue to undergo user testing, with iterations guided by further research and development feedback.</p>
+              </div>
+    </div>
+
+
+
+
